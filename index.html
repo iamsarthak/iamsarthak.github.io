@@ -36,16 +36,56 @@
         *{
           font-family: 'Signika', sans-serif !important;
         }
+        .page-spinner-bar {
+	width: 100px;
+	height: 100px;
+}
+.page-spinner-bar:before,
+.page-spinner-bar:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background-color: rgba(0,0,0,0.0);
+	border: 50px solid #fed136;
+	opacity: 0.3;
+	border-radius: 50%;
+}
+.page-spinner-bar:before {
+	border-left: 50px solid rgba(0,0,0,0.0);
+	border-right: 50px solid rgba(0,0,0,0.0);
+	animation: spin01 3000ms infinite ease alternate;
+}
+.page-spinner-bar:after {
+	border-left: 50px solid rgba(0,0,0,0.0);
+	border-right: 50px solid rgba(0,0,0,0.0);
+	border-top: 50px solid rgba(0,0,0,0.0);
+	animation: spin02 4000ms infinite linear;
+}
+@keyframes spin01 {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(720deg);}	
+}
+@keyframes spin02 {
+	0% {transform: rotate(720deg);}
+	100% {transform: rotate(0deg);}	
+}
+.glow {
+	-webkit-filter: drop-shadow(0 1px 1px rgba(0,0,0,0.75)) drop-shadow(0 0 8px rgba(102,175,233,0.6));
+	filter: drop-shadow(0 1px 1px rgba(0,0,0,0.75)) drop-shadow(0 0 8px rgba(102,175,233,0.6));
+}
       </style>
       <script>
         function checkfunction(){
           console.log('hi and welcome to invoid');
+          document.getElementById('loader').style.display = "none";
         }
         </script>
   </head>
-
+  <div style="position:fixed; right:0; bottom:0"id="loader" class="page-spinner-bar"></div>
   <body  onload="checkfunction()" id="page-top">
-
+      
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
